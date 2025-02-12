@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero text-white text-center py-5">
+    <div class="container">
+        <h1>Upgrade Your PC with the Best Components</h1>
+        <p>Shop the latest processors, GPUs, RAM, and more at unbeatable prices.</p>
+        <a href="{{ url_for('main.products') }}" class="btn btn-primary btn-lg">Shop Now</a>
+    </div>
+</section>
+
+<!-- Product Slideshow -->
+ <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        {% for product in featured_products %}
+        <div class="carousel-item {% if loop.first %}active{% endif %}">
+            <img src="{{ url_for('static', filename=product.image_url) }}" class="d-block w-100 carousel-img" alt="{{ product.name }}">
+            <div class="carousel-caption">
+                <h5>{{ product.name }}</h5>
+                <p class="card-text">₱{{ "{:,.2f}".format(product.price) }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <!-- Add below carousel-inner -->
+<div class="carousel-indicators">
+    {% for product in featured_products %}
+    <button type="button" 
+            data-bs-target="#productCarousel" 
+            data-bs-slide-to="{{ loop.index0 }}" 
+            class="{% if loop.first %}active{% endif %}" 
+            aria-current="{% if loop.first %}true{% endif %}">
+    </button>
+    {% endfor %}
+</div>
+    <!-- Controls should be AFTER carousel-inner -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </button>
+</div>
+<!-- Facebook Page Embed -->
+<section class="text-center my-5">
+    <h3>Follow Us on!</h3>
+    <div class="social-icons">
+        <a href="https://www.facebook.com/pchub.2025/" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+    </div>    
+</section>
+{% endblock %}

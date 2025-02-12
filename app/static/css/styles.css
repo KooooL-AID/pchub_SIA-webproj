@@ -1,0 +1,279 @@
+/* 📌 Swiss-Inspired PC Parts E-Commerce Design */
+:root {
+    --primary-color: #0A0F24; /* Deep Navy Blue */
+    --secondary-color: #FFD700; /* Gold Accent */
+    --accent-color: #17A2B8; /* Cyan Blue */
+    --bg-light: #F5F5F5; /* Light Gray */
+    --text-dark: #222; /* High Readability */
+    --border-radius: 10px;
+}
+
+/* 🌍 General Styles - Mobile First */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg-light);
+    color: var(--text-dark);
+    margin: 0;
+    padding: 0;
+}
+.header__logo {
+    font-size: 2.0rem;
+    font-weight: bold;
+    color: rgb(8, 8, 8); 
+    background-color: rgb(248, 218, 20);
+    padding: 10px 20px;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+
+/* 🔥 Navigation */
+.navbar {
+    background: var(--primary-color);
+    padding: 10px;
+}
+
+.navbar-brand img {
+    max-height: 60px;
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-nav .nav-link {
+    color: white !important;
+    font-weight: 600;
+    padding: 6px;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--secondary-color) !important;
+}
+
+/* 🔽 Dropdown Menu */
+.navbar .dropdown-menu {
+    background-color: var(--primary-color);
+    border-radius: var(--border-radius);
+    border: none;
+    padding: 0;
+    min-width: 180px;
+}
+
+.navbar .dropdown-item {
+    color: white;
+    padding: 10px;
+    transition: background 0.3s ease-in-out;
+}
+
+.navbar .dropdown-item:hover {
+    background-color: var(--accent-color);
+    color: black;
+}
+
+/* Ensures dropdown opens on hover (for larger screens) */
+@media (min-width: 992px) {
+    .navbar .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+}
+
+/* 🏆 Hero Section */
+.hero {
+    background: var(--primary-color);
+    text-align: center;
+    color: white;
+    padding: 60px 15px;
+}
+
+.hero h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+}
+
+.hero p {
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.btn-primary {
+    background: var(--secondary-color);
+    color: black;
+    padding: 10px 20px;
+    font-weight: 600;
+    border-radius: var(--border-radius);
+}
+
+/* 🎯 Search Button */
+.btn-outline-success {
+    border: 2px solid var(--secondary-color);
+    color: var(--secondary-color);
+    font-weight: 600;
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.btn-outline-success:hover {
+    background: var(--secondary-color);
+    color: black;
+}
+
+/* 🎡 Carousel */
+.carousel {
+    max-height: 800px;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.carousel-inner {
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.carousel img {
+    width: 800px;
+    height: 600px;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+}
+
+
+
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    border-radius: var(--border-radius);
+}
+
+/* 🎛 Carousel Controls */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: var(--secondary-color);
+    border-radius: 50%;
+    padding: 10px;
+    width: 35px;
+    height: 35px;
+    opacity: 0.8;
+}
+
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+    opacity: 1;
+}
+
+/* 🛒 Product Section */
+.card {
+    border-radius: var(--border-radius);
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    transition: 0.3s ease-in-out;
+    text-align: center;
+}   
+
+.card:hover {
+    transform: translateY(-3px);
+}
+
+.card-img-top {
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+    height: 220px;
+    object-fit: contain;
+}
+
+.card-title {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.add-to-cart {
+    background: var(--primary-color);
+    color: rgb(255, 255, 255);
+    padding: 8px;
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+}
+
+.add-to-cart:hover {
+    background: var(--accent-color);
+    color: black;
+}
+
+/* 📝 Blog & About Us Sections */
+.blog img, .about img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+}
+
+/* 📑 FAQ & Accordion */
+.accordion-button {
+    background: var(--primary-color);
+    color: white;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.accordion-button:hover {
+    background: var(--accent-color);
+    color: black;
+}
+
+/* 📌 Footer */
+footer {
+    background: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 15px 10px;
+    font-size: 0.85rem;
+}
+
+/* 📱 Social Media Icons */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.2rem;
+    gap: 15px;
+}
+
+.social-icons a {
+    color: rgb(1, 1, 1);
+    font-size: 24px;
+    transition: transform 0.3s;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    transform: scale(1.1);
+    color: var(--secondary-color);
+}
+
+/* 🖥️ Responsive Adjustments */
+@media (min-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+    }
+
+    .btn-primary {
+        padding: 12px 24px;
+    }
+
+    .card-title {
+        font-size: 1.1rem;
+    }
+
+    .blog img, .about img {
+        height: 300px;
+    }
+
+}

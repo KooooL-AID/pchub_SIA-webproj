@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="text-center mb-4">
+    {% if selected_category %}
+        {{ selected_category|capitalize }} Products
+    {% else %}
+        All Products
+    {% endif %}
+</h2>
+<div class="row g-4">
+    {% for product in products %}
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <img src="{{ url_for('static', filename=product.image_url) }}" class="card-img-top" alt="{{ product.name }}">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text">₱{{ "{:,.2f}".format(product.price) }}</p>
+                        <button class="btn btn-outline-primary add-to-cart" data-product-id="{{ product.id }}">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% if search_query %}
+    <h3 class="text-center">Search results for "{{ search_query }}"</h3>
+{% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}

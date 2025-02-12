@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="container py-5">
+    <h2 class="text-center">PCHub Blog</h2>
+    <p>Stay updated with the latest PC tech news, reviews, and build guides.</p>
+    <div class="row">
+        <div class="col-md-4">
+            <img src="{{ url_for('static', filename='assets/blog1.jpg') }}" class="img-fluid rounded" alt="Latest PC Builds">
+            <h5 class="mt-2">Top 5 Gaming PCs for 2025</h5>
+        </div>
+        <div class="col-md-4">
+            <img src="{{ url_for('static', filename='assets/blog2.jpg') }}" class="img-fluid rounded" alt="GPU Reviews">
+            <h5 class="mt-2">NVIDIA vs AMD: Which GPU to Choose?</h5>
+        </div>
+    </div>
+</section>
+{% endblock %}

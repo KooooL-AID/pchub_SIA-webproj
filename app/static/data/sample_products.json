@@ -1,0 +1,92 @@
+{
+    "products": [
+      {
+        "name": "Intel Core i9-13900K",
+        "price": 33334.44,
+        "description": "13th Gen Intel Core i9 Processor with 24 Cores and 32 Threads.",
+        "image_url": "assets/processors/intel_i9.jpg",
+        "category": "processors",
+        "stock": 15
+      },
+      {
+        "name": "AMD Ryzen 9 7950X",
+        "price": 39549.44,
+        "description": "AMD Ryzen 9 7950X with 16 Cores and 32 Threads.",
+        "image_url": "assets/processors/ryzen_9.jpg",
+        "category": "processors",
+        "stock": 10
+      },
+      {
+        "name": "NVIDIA RTX 4090",
+        "price": 90399.44,
+        "description": "Powerful high-end graphics card for gaming and AI workloads.",
+        "image_url": "assets/graphics-card/rtx_4090.jpg",
+        "category": "graphics-card",
+        "stock": 5
+      },
+      {
+        "name": "AMD Radeon RX 7900 XTX",
+        "price": 56499.44,
+        "description": "High-performance GPU for gaming and content creation.",
+        "image_url": "assets/graphics-card/rx_7900.jpg",
+        "category": "graphics-card",
+        "stock": 8
+      },
+      {
+        "name": "Corsair Vengeance 32GB (2x16GB) DDR5-6000",
+        "price": 10169.44,
+        "description": "High-speed DDR5 memory for gaming and productivity.",
+        "image_url": "assets/ram/corsair_vengeance.jpg",
+        "category": "ram",
+        "stock": 20
+      },
+      {
+        "name": "Samsung 990 Pro 2TB NVMe SSD",
+        "price": 12994.44,
+        "description": "Ultra-fast NVMe SSD with PCIe Gen4 speeds.",
+        "image_url": "assets/storage/samsung_990_pro.jpg",
+        "category": "storage",
+        "stock": 30
+      },
+      {
+        "name": "Corsair RM850x 850W PSU",
+        "price": 7909.44,
+        "description": "Fully modular 80+ Gold power supply.",
+        "image_url": "assets/psu/corsair_rm850x.jpg",
+        "category": "psu",
+        "stock": 12
+      },
+      {
+        "name": "NZXT H510 Elite Mid-Tower Case",
+        "price": 8474.44,
+        "description": "Sleek tempered glass case with RGB lighting.",
+        "image_url": "assets/cases/nzxt_h510.jpg",
+        "category": "cases",
+        "stock": 18
+      },
+      {
+        "name": "Noctua NH-D15 CPU Air Cooler",
+        "price": 5649.44,
+        "description": "High-performance dual-tower air cooler.",
+        "image_url": "assets/cooling/noctua_nhd15.jpg",
+        "category": "cooling",
+        "stock": 25
+      },
+      {
+        "name": "Logitech G Pro X Mechanical Keyboard",
+        "price": 7344.44,
+        "description": "Gaming mechanical keyboard with swappable switches.",
+        "image_url": "assets/peripherals/logitech_gpro_x.jpg",
+        "category": "peripherals",
+        "stock": 40
+      },
+      {
+        "name": "Elgato Stream Deck XL",
+        "price": 14124.44,
+        "description": "Customizable control deck for streamers and creators.",
+        "image_url": "assets/accessories/stream_deck_xl.jpg",
+        "category": "accessories",
+        "stock": 15
+      }
+    ]
+  }
