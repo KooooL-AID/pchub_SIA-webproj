@@ -1,100 +1,74 @@
 from flask import Blueprint, render_template, jsonify, request, url_for
-from app.models import Product
-from app import db
 import json
 import os
 
 main = Blueprint('main', __name__)
+DATA_FILE = os.path.join(os.path.abspath(os.path.dirname(__file__)), '.', 'static', 'data', 'sample_products.json')
 
+# Categories dictionary for filtering
 CATEGORIES = {
     'processors': 'Processors',
-    'graphics-card': 'Graphics Cards',  # Changed from graphics-cards to match your data
+    'graphics-card': 'Graphics Cards',
     'ram': 'RAM',
     'storage': 'Storage',
-    'psu': 'Power Supplies',           # Changed from power-supplies to match your data
+    'psu': 'Power Supplies',
     'cases': 'Cases',
     'cooling': 'Cooling',
     'peripherals': 'Peripherals',
     'accessories': 'Accessories'
 }
 
+# Inject categories into templates globally
 @main.context_processor
 def inject_categories():
     return dict(categories=CATEGORIES)
 
+# Function to load products from sample_products.json
+def load_products():
+    """ Load products from JSON file. """
+    if not os.path.exists(DATA_FILE):
+        print(f"⚠️ Warning: sample_products.json not found at {DATA_FILE}")
+        return []
+
+    with open(DATA_FILE, 'r', encoding='utf-8') as file:
+        try:
+            data = json.load(file)
+            return data.get('products', [])
+        except json.JSONDecodeError:
+            print("❌ Error: Failed to parse sample_products.json")
+            return []
+
+# Home page route
 @main.route('/')
 def index():
-    featured_products = [
-        {"name": "NVIDIA RTX 4090", "price": 90399.44, "image_url": "assets/graphics-card/rtx_4090.jpg"},
-        {"name": "AMD Radeon RX 7900 XTX", "price": 56499.44, "image_url": "assets/graphics-card/rx_7900.jpg"},
-        {"name": "AMD Ryzen 9 7950X", "price": 39549.44, "image_url": "assets/processors/ryzen_9.jpg"},
-        # ... other products
-    ]
+    """ Render homepage with featured products. """
+    featured_products = load_products()[:3]  # Show first 3 products as featured
     return render_template('index.html', featured_products=featured_products)
 
-
-@main.route('/api/products')
-def get_products():
-    products = Product.query.all()
-    return jsonify([{
-        'id': p.id,
-        'name': p.name,
-        'price': p.price,
-        'image': url_for('static', filename=p.image_url),
-        'category': p.category,
-        'stock': p.stock
-    } for p in products])
-
-# Database initialization function
+# Products page route
 @main.route('/products')
 def products():
+    """ Render products page, filtering by category or search query. """
     query = request.args.get('q')
     category = request.args.get('category')
+    
+    all_products = load_products()
 
-    if query:
-        products = Product.query.filter(
-            (Product.name.ilike(f"%{query}%")) | (Product.description.ilike(f"%{query}%"))
-        ).all()
-    elif category:
-        # Convert display name to storage format (e.g., "Graphics Cards" -> "graphics-cards")
-        category_key = category.lower().replace(' ', '-')
-        products = Product.query.filter(Product.category == category_key).all()
+    # Filter by category
+    if category and category in CATEGORIES:
+        filtered_products = [p for p in all_products if p["category"].lower() == category.lower()]
+    # Filter by search query
+    elif query:
+        filtered_products = [p for p in all_products if query.lower() in p["name"].lower()]
     else:
-        products = Product.query.all()
+        filtered_products = all_products
 
-    return render_template('products.html', 
-                         products=products, 
-                         search_query=query, 
-                         selected_category=category,
-                         categories=CATEGORIES)
+    return render_template('products.html', products=filtered_products, search_query=query, selected_category=category)
 
-def init_db():
-    json_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), '.', 'static', 'data', 'sample_products.json')
-
-    if not os.path.exists(json_path):
-        print(f"⚠️ Warning: sample_products.json not found at {json_path}")
-        return
-
-    with open(json_path, 'r') as file:
-        data = json.load(file)
-        product_data = data.get('products', [])
-
-    if Product.query.first() is None:
-        products = [
-            Product(
-                name=item["name"],
-                price=item["price"],
-                description=item["description"],
-                image_url=item["image_url"],
-                # Ensure category is stored in standardized format
-                category=item["category"].lower().replace(' ', '-'),
-                stock=item["stock"]
-            ) for item in product_data
-        ]
-
-        db.session.add_all(products)
-        db.session.commit()
-        print(f"✅ Added {len(products)} sample products to the database!")
+# API endpoint to return all products as JSON
+@main.route('/api/products')
+def get_products():
+    return jsonify(load_products())
 
 # Currency formatting filter
 def currency_filter(value):

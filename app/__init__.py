@@ -1,20 +1,14 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
-from config import Config
-
-db = SQLAlchemy()
-migrate = Migrate()
+from app.routes import main  # Importing Blueprint
 
 def create_app():
+    """Factory function to create the Flask application."""
     app = Flask(__name__)
-    app.config.from_object(Config)
 
-    db.init_app(app)
-    migrate.init_app(app, db)
+    # Load configurations
+    app.config.from_pyfile('config.py')
 
-    from app.routes import main
+    # Register Blueprints
     app.register_blueprint(main)
 
     return app
-from app import models
