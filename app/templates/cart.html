@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <img src="/static/${item.image_url}" alt="${item.name}" class="cart-item-image">
                 <div class="cart-item-info">
                     <h5>${item.name}</h5>
-                    <p>₱${item.price.toFixed(2)}</p>
+                    <p>₱:,.2f${item.price.toFixed(2)}</p>
                     <input type="number" class="cart-qty" data-id="${item.id}" value="${item.quantity}" min="1">
                     <button class="btn btn-danger btn-sm remove-item" data-id="${item.id}">Remove</button>
                 </div>
