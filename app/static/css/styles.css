@@ -55,9 +55,7 @@ body {
 .navbar-nav .nav-link:hover {
     color: var(--secondary-color) !important;
 }
-.navbar-collapse {
-    display: flex !important;
-}
+
 
 
 /* 🔽 Dropdown Menu */
