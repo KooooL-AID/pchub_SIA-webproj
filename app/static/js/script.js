@@ -65,8 +65,10 @@ document.addEventListener("DOMContentLoaded", () => {
             alert("Live Chat Coming Soon!"); // Placeholder action
         });
     });
-
     
+    function formatPrice(price) {
+        return price.toLocaleString("en-PH", { style: "currency", currency: "PHP" });
+    }
     
     
 });
