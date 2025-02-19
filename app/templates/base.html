@@ -10,19 +10,28 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
+
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
                 <a class="navbar-brand" href="{{ url_for('main.index') }}">
                     <div class="header__logo">PCHub</div>
-                </a>               
+                </a> 
+    
+                <!-- Add Navbar Toggler for Mobile -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+    
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
-                        <form class="d-flex" action="{{ url_for('main.products') }}" method="GET">
-                            <input class="form-control me-2" type="search" placeholder="Search Products" name="q">
-                            <button class="btn btn-outline-success" type="submit">Search</button>
-                        </form> 
-                       
+                        <li class="nav-item">
+                            <form class="d-flex" action="{{ url_for('main.products') }}" method="GET">
+                                <input class="form-control me-2" type="search" placeholder="Search Products" name="q">
+                                <button class="btn btn-outline-success" type="submit">Search</button>
+                            </form>
+                        </li>
                         <li class="nav-item"><a class="nav-link" href="{{ url_for('main.index') }}">Home</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="productDropdown" role="button" data-bs-toggle="dropdown">
@@ -39,22 +48,22 @@
                             </ul>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="{{ url_for('main.login') }}"><i class="fas fa-user"></i></a></li>   
-                        <li class="nav-item"><a class= "nav-link" href="{{ url_for('main.support') }}"><i class="fa fa-phone" ></i></a></li>                        </a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('main.support') }}"><i class="fa fa-phone"></i></a></li>                        
                         <li class="nav-item">
                             <a class="nav-link position-relative" href="{{ url_for('main.cart') }}">
                                 <i class="fas fa-shopping-cart"></i>
-                                <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                                <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" 
                                       style="display: none;">
                                     0
                                 </span>
                             </a>
-                        </li>
-                                           
+                        </li>                         
                     </ul>
                 </div>
             </div>
         </nav>        
     </header>
+    
 
     {% block content %}{% endblock %}
 
