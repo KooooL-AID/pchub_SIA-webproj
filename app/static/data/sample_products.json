@@ -1,92 +1,236 @@
+
 {
-    "products": [
-      {
-        "name": "Intel Core i9-13900K",
-        "price": 33334.44,
-        "description": "13th Gen Intel Core i9 Processor with 24 Cores and 32 Threads.",
-        "image_url": "assets/processors/intel_i9.jpg",
-        "category": "processors",
-        "stock": 15
+  "products": [
+    {
+      "id": 1,
+      "name": "Intel Core i9-13900K",
+      "price": 33334.44,
+      "description": "13th Gen Intel Core i9 Processor with 24 Cores and 32 Threads.",
+      "image_url": "assets/processors/intel_i9.jpg",
+      "category": "processors",
+      "stock": 15,
+      "specifications": {
+        "cores": 24,
+        "threads": 32,
+        "base_clock": "3.0 GHz",
+        "boost_clock": "5.8 GHz",
+        "cache": "36MB",
+        "socket": "LGA 1700"
       },
-      {
-        "name": "AMD Ryzen 9 7950X",
-        "price": 39549.44,
-        "description": "AMD Ryzen 9 7950X with 16 Cores and 32 Threads.",
-        "image_url": "assets/processors/ryzen_9.jpg",
-        "category": "processors",
-        "stock": 10
+      "key_features": [
+        "High clock speeds for gaming and productivity",
+        "Increased core and thread count for demanding workloads",
+        "Support for DDR5 memory",
+        "PCIe 5.0 support"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "AMD Ryzen 9 7950X",
+      "price": 39549.44,
+      "description": "AMD Ryzen 9 7950X with 16 Cores and 32 Threads.",
+      "image_url": "assets/processors/ryzen_9.jpg",
+      "category": "processors",
+      "stock": 10,
+      "specifications": {
+        "cores": 16,
+        "threads": 32,
+        "base_clock": "4.5 GHz",
+        "boost_clock": "5.7 GHz",
+        "cache": "64MB",
+        "socket": "AM5"
       },
-      {
-        "name": "NVIDIA RTX 4090",
-        "price": 90399.44,
-        "description": "Powerful high-end graphics card for gaming and AI workloads.",
-        "image_url": "assets/graphics-card/rtx_4090.jpg",
-        "category": "graphics-card",
-        "stock": 5
+      "key_features": [
+        "High performance for gaming and content creation",
+        "Advanced Zen 4 architecture",
+        "Support for DDR5 memory",
+        "PCIe 5.0 support"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "NVIDIA RTX 4090",
+      "price": 90399.44,
+      "description": "Powerful high-end graphics card for gaming and AI workloads.",
+      "image_url": "assets/graphics-card/rtx_4090.jpg",
+      "category": "graphics-card",
+      "stock": 5,
+      "specifications": {
+        "GPU": "AD102",
+        "CUDA_cores": 16384,
+        "memory": "24GB GDDR6X",
+        "memory_interface": "384-bit",
+        "boost_clock": "2.52 GHz"
       },
-      {
-        "name": "AMD Radeon RX 7900 XTX",
-        "price": 56499.44,
-        "description": "High-performance GPU for gaming and content creation.",
-        "image_url": "assets/graphics-card/rx_7900.jpg",
-        "category": "graphics-card",
-        "stock": 8
+      "key_features": [
+        "Exceptional gaming performance at 4K and higher resolutions",
+        "Real-time ray tracing and DLSS support",
+        "High performance for AI and machine learning"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "AMD Radeon RX 7900 XTX",
+      "price": 56499.44,
+      "description": "High-performance GPU for gaming and content creation.",
+      "image_url": "assets/graphics-card/rx_7900.jpg",
+      "category": "graphics-card",
+      "stock": 8,
+      "specifications": {
+        "GPU": "Navi 31",
+        "Stream_Processors": 6144,
+        "memory": "24GB GDDR6",
+        "memory_interface": "384-bit",
+        "boost_clock": "2.3 GHz"
       },
-      {
-        "name": "Corsair Vengeance 32GB (2x16GB) DDR5-6000",
-        "price": 10169.44,
-        "description": "High-speed DDR5 memory for gaming and productivity.",
-        "image_url": "assets/ram/corsair_vengeance.jpg",
-        "category": "ram",
-        "stock": 20
+      "key_features": [
+        "Excellent performance for gaming and content creation",
+        "RDNA 3 architecture",
+        "Support for ray tracing and FSR"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Corsair Vengeance 32GB (2x16GB) DDR5-6000",
+      "price": 10169.44,
+      "description": "High-speed DDR5 memory for gaming and productivity.",
+      "image_url": "assets/ram/corsair_vengeance.jpg",
+      "category": "ram",
+      "stock": 20,
+      "specifications": {
+        "capacity": "32GB (2x16GB)",
+        "type": "DDR5",
+        "speed": "6000MHz",
+        "timings": "30-36-36-76"
       },
-      {
-        "name": "Samsung 990 Pro 2TB NVMe SSD",
-        "price": 12994.44,
-        "description": "Ultra-fast NVMe SSD with PCIe Gen4 speeds.",
-        "image_url": "assets/storage/samsung_990_pro.jpg",
-        "category": "storage",
-        "stock": 30
+      "key_features": [
+        "High-speed DDR5 performance",
+        "Optimized for gaming and demanding applications",
+        "XMP support for easy overclocking"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Samsung 990 Pro 2TB NVMe SSD",
+      "price": 12994.44,
+      "description": "Ultra-fast NVMe SSD with PCIe Gen4 speeds.",
+      "image_url": "assets/storage/samsung_990_pro.jpg",
+      "category": "storage",
+      "stock": 30,
+      "specifications": {
+        "capacity": "2TB",
+        "interface": "PCIe 4.0 NVMe",
+        "sequential_read": "Up to 7,450 MB/s",
+        "sequential_write": "Up to 6,900 MB/s"
       },
-      {
-        "name": "Corsair RM850x 850W PSU",
-        "price": 7909.44,
-        "description": "Fully modular 80+ Gold power supply.",
-        "image_url": "assets/psu/corsair_rm850x.jpg",
-        "category": "psu",
-        "stock": 12
+      "key_features": [
+        "Blazing-fast read and write speeds",
+        "Ideal for gaming, content creation, and system boot drives",
+        "NVMe interface for optimal performance"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Corsair RM850x 850W PSU",
+      "price": 7909.44,
+      "description": "Fully modular 80+ Gold power supply.",
+      "image_url": "assets/psu/corsair_rm850x.jpg",
+      "category": "psu",
+      "stock": 12,
+      "specifications": {
+        "wattage": "850W",
+        "efficiency": "80+ Gold",
+        "modular": "Fully Modular",
+        "form_factor": "ATX"
       },
-      {
-        "name": "NZXT H510 Elite Mid-Tower Case",
-        "price": 8474.44,
-        "description": "Sleek tempered glass case with RGB lighting.",
-        "image_url": "assets/cases/nzxt_h510.jpg",
-        "category": "cases",
-        "stock": 18
+      "key_features": [
+        "Reliable and efficient power delivery",
+        "Fully modular design for easy cable management",
+        "Quiet operation"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "NZXT H510 Elite Mid-Tower Case",
+      "price": 8474.44,
+      "description": "Sleek tempered glass case with RGB lighting.",
+      "image_url": "assets/cases/nzxt_h510.jpg",
+      "category": "cases",
+      "stock": 18,
+      "specifications": {
+        "type": "Mid-Tower",
+        "material": "Steel, Tempered Glass",
+        "motherboard_support": "ATX, Micro-ATX, Mini-ITX",
+        "expansion_slots": 7
       },
-      {
-        "name": "Noctua NH-D15 CPU Air Cooler",
-        "price": 5649.44,
-        "description": "High-performance dual-tower air cooler.",
-        "image_url": "assets/cooling/noctua_nhd15.jpg",
-        "category": "cooling",
-        "stock": 25
+      "key_features": [
+        "Stylish design with tempered glass side panel",
+        "Integrated RGB lighting",
+        "Excellent airflow"
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Noctua NH-D15 CPU Air Cooler",
+      "price": 5649.44,
+      "description": "High-performance dual-tower air cooler.",
+      "image_url": "assets/cooling/noctua_nhd15.jpg",
+      "category": "cooling",
+      "stock": 25,
+      "specifications": {
+        "cooler_type": "Air Cooler",
+        "fan_size": "140mm",
+        "socket_compatibility": "Intel LGA 1700/1200/115x, AMD AM5/AM4",
+        "TDP": "Up to 220W+"
       },
-      {
-        "name": "Logitech G Pro X Mechanical Keyboard",
-        "price": 7344.44,
-        "description": "Gaming mechanical keyboard with swappable switches.",
-        "image_url": "assets/peripherals/logitech_gpro_x.jpg",
-        "category": "peripherals",
-        "stock": 40
+      "key_features": [
+        "Exceptional cooling performance",
+        "Quiet operation",
+        "Dual-tower design with two fans"
+      ]
+    },
+
+    {
+      "id": 10,
+      "name": "Logitech G Pro X Mechanical Keyboard",
+      "price": 7344.44,
+      "description": "Gaming mechanical keyboard with swappable switches.",
+      "image_url": "assets/peripherals/logitech_gpro_x.jpg",
+      "category": "peripherals",
+      "stock": 40,
+      "specifications": {
+        "switch_type": "Swappable Mechanical",
+        "connection": "Wired",
+        "backlighting": "RGB",
+        "form_factor": "Tenkeyless (TKL)"
       },
-      {
-        "name": "Elgato Stream Deck XL",
-        "price": 14124.44,
-        "description": "Customizable control deck for streamers and creators.",
-        "image_url": "assets/accessories/stream_deck_xl.jpg",
-        "category": "accessories",
-        "stock": 15
-      }
-    ]
-  }
+      "key_features": [
+        "Customizable swappable switches",
+        "Durable and compact design",
+        "RGB lighting with Logitech G HUB support"
+      ]
+    },
+
+    {
+      "id": 11,
+      "name": "Elgato Stream Deck XL",
+      "price": 14124.44,
+      "description": "Customizable control deck for streamers and creators.",
+      "image_url": "assets/accessories/stream_deck_xl.jpg",
+      "category": "accessories",
+      "stock": 15,
+      "specifications": {
+        "buttons": 32,
+        "display": "LCD",
+        "connectivity": "USB 3.0",
+        "dimensions": "182 x 125 x 34 mm"
+      },
+      "key_features": [
+        "32 customizable LCD keys",
+        "Drag and drop setup",
+        "Integration with various streaming software",
+        "Create custom icons and actions"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+<!-- support.html -->
+{% extends 'base.html' %}
+
+{% block title %}Customer Support{% endblock %}
+
+{% block content %}
+<div class="support-container my-5">
+    <h2>Customer Support</h2>
+    <p>Find answers to common issues or reach out to our support team.</p>
+    <ul>
+        <li><a href="{{ url_for('main.faq') }}">FAQs</a></li>
+        <li><a href="{{ url_for('main.contact') }}">Contact Support</a></li>
+        <li><a href="{{ url_for('main.how_to') }}">Guides & Tutorials</a></li>
+    </ul>
+</div>
+{% endblock %}

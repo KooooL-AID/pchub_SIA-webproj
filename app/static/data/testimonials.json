@@ -1,0 +1,45 @@
+{
+    "testimonials": [
+      {
+        "id": 1,
+        "customer_name": "John Doe",
+        "rating": 5,
+        "comment": "Amazing performance! The Intel Core i9-13900K exceeded my expectations for gaming and productivity.",
+        "product_id": 1,
+        "date": "2025-02-19"
+      },
+      {
+        "id": 2,
+        "customer_name": "Jane Smith",
+        "rating": 4,
+        "comment": "The AMD Ryzen 9 7950X is a beast, but it runs a bit hot. Cooling is a must!",
+        "product_id": 2,
+        "date": "2025-02-18"
+      },
+      {
+        "id": 3,
+        "customer_name": "Carlos Mendoza",
+        "rating": 5,
+        "comment": "The RTX 4090 delivers insane 4K gaming performance. Worth every penny!",
+        "product_id": 3,
+        "date": "2025-02-17"
+      },
+      {
+        "id": 4,
+        "customer_name": "Emily Johnson",
+        "rating": 3,
+        "comment": "Good GPU but overpriced compared to alternatives.",
+        "product_id": 4,
+        "date": "2025-02-16"
+      },
+      {
+        "id": 5,
+        "customer_name": "David Lee",
+        "rating": 5,
+        "comment": "The Corsair Vengeance DDR5 RAM runs smoothly with XMP enabled!",
+        "product_id": 5,
+        "date": "2025-02-15"
+      }
+    ]
+  }
+  

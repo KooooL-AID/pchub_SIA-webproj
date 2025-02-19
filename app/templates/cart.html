@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}Shopping Cart - PC Parts Hub{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h2>Shopping Cart</h2>
+    <div id="cart-container">
+        <p>Your cart is empty.</p>
+    </div>
+    <button id="clear-cart" class="btn btn-danger mt-3">Clear Cart</button>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const cartContainer = document.getElementById("cart-container");
+    const clearCartBtn = document.getElementById("clear-cart");
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    function renderCart() {
+        if (cart.length === 0) {
+            cartContainer.innerHTML = "<p>Your cart is empty.</p>";
+            return;
+        }
+
+        cartContainer.innerHTML = cart.map(item => `
+            <div class="cart-item">
+                <img src="/static/${item.image_url}" alt="${item.name}" class="cart-item-image">
+                <div class="cart-item-info">
+                    <h5>${item.name}</h5>
+                    <p>₱${item.price.toFixed(2)}</p>
+                    <input type="number" class="cart-qty" data-id="${item.id}" value="${item.quantity}" min="1">
+                    <button class="btn btn-danger btn-sm remove-item" data-id="${item.id}">Remove</button>
+                </div>
+            </div>
+        `).join("");
+
+        // Attach event listeners for removing and updating cart
+        document.querySelectorAll(".remove-item").forEach(button => {
+            button.addEventListener("click", event => {
+                const productId = event.target.dataset.id;
+                cart = cart.filter(item => item.id != productId);
+                localStorage.setItem("cart", JSON.stringify(cart));
+                renderCart();
+            });
+        });
+
+        document.querySelectorAll(".cart-qty").forEach(input => {
+            input.addEventListener("change", event => {
+                const productId = event.target.dataset.id;
+                const newQuantity = parseInt(event.target.value);
+                const product = cart.find(item => item.id == productId);
+                if (product && newQuantity > 0) {
+                    product.quantity = newQuantity;
+                    localStorage.setItem("cart", JSON.stringify(cart));
+                    renderCart();
+                }
+            });
+        });
+    }
+
+    clearCartBtn.addEventListener("click", () => {
+        localStorage.removeItem("cart");
+        cart = [];
+        renderCart();
+    });
+
+    renderCart();
+});
+</script>
+{% endblock %}

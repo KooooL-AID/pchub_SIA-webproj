@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}Customer Testimonials - PC Parts Hub{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div>
+        <a href="{{ url_for('main.products') }}" class="btn btn-outline-secondary mb-3">
+            ← Go Back
+        </a>
+    </div>
+    <h1 class="text-center">Customer Testimonials</h1>
+    <p class="text-center text-muted">See what our customers say about our products!</p>
+    
+    <div class="row">
+        {% for testimonial in testimonials %}
+        <div class="col-md-6">
+            <div class="card my-3">
+                <div class="card-body">
+                    <h5 class="card-title">{{ testimonial.customer_name }}</h5>
+                    <div class="text-warning">
+                        {% for i in range(testimonial.rating) %}⭐{% endfor %}
+                    </div>
+                    <p class="card-text">"{{ testimonial.comment }}"</p>
+                    <small class="text-muted">{{ testimonial.date }}</small>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <p class="text-center">No testimonials yet. Be the first to share your experience!</p>
+        {% endfor %}
+    </div>
+
+    <!-- Submit a Review Form -->
+    <div class="testimonial-form bg-light p-4 mt-5">
+        <h3>Share Your Experience</h3>
+        <form action="{{ url_for('main.testimonials') }}" method="post">
+            <div class="mb-3">
+                <label for="name" class="form-label">Your Name</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="mb-3">
+                <label for="rating" class="form-label">Rating</label>
+                <select class="form-control" id="rating" name="rating" required>
+                    <option value="5">⭐⭐⭐⭐⭐ (5 Stars)</option>
+                    <option value="4">⭐⭐⭐⭐ (4 Stars)</option>
+                    <option value="3">⭐⭐⭐ (3 Stars)</option>
+                    <option value="2">⭐⭐ (2 Stars)</option>
+                    <option value="1">⭐ (1 Star)</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="comment" class="form-label">Your Review</label>
+                <textarea class="form-control" id="comment" name="comment" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit Review</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

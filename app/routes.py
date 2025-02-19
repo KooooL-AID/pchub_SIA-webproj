@@ -1,9 +1,12 @@
-from flask import Blueprint, render_template, jsonify, request, url_for
+from flask import Blueprint, render_template, jsonify, request, url_for, flash, redirect,abort
 import json
 import os
+from datetime import datetime
 
 main = Blueprint('main', __name__)
 DATA_FILE = os.path.join(os.path.abspath(os.path.dirname(__file__)), '.', 'static', 'data', 'sample_products.json')
+TESTIMONIALS_FILE = os.path.join(os.path.abspath(os.path.dirname(__file__)), '.', 'static', 'data', 'testimonials.json')
+
 
 # Categories dictionary for filtering
 CATEGORIES = {
@@ -38,6 +41,21 @@ def load_products():
             print("❌ Error: Failed to parse sample_products.json")
             return []
 
+#Product Details routes
+@main.route('/product/<int:product_id>')
+def product_detail(product_id):
+    """ Render detailed product page. """
+    products = load_products()
+    product = next((p for p in products if p['id'] == product_id), None)
+    if not product:
+        return abort(404)
+    
+    return render_template('product_detail.html', product=product)
+
+# Currency formatting filter
+def currency_filter(value):
+    return f"₱{value:,.2f}"
+
 # Home page route
 @main.route('/')
 def index():
@@ -65,16 +83,33 @@ def products():
 
     return render_template('products.html', products=filtered_products, search_query=query, selected_category=category)
 
-# API endpoint to return all products as JSON
-@main.route('/api/products')
-def get_products():
-    return jsonify(load_products())
+#JSON API endpoints
+@main.route('/api/product/<int:product_id>')
+def get_product(product_id):
+    """Return product details as JSON."""
+    products = load_products()
+    product = next((p for p in products if p['id'] == product_id), None)
+    if product:
+        return jsonify(product)
+    return jsonify({"error": "Product not found"}), 404
 
-# Currency formatting filter
-def currency_filter(value):
-    return f"₱{value:,.2f}"
 
-# Additional pages
+#Login and Register routes
+@main.route('/login')
+def login():
+    return render_template('login.html')
+
+@main.route('/register')
+def register():
+    return render_template('register.html')
+
+# Additional pages routes
+
+@main.route('/cart')
+def cart():
+    return render_template('cart.html')
+
+
 @main.route('/about')
 def about():
     return render_template('about.html')
@@ -106,3 +141,72 @@ def tutorials():
 @main.route('/blog')
 def blog():
     return render_template('blog.html')
+
+@main.route('/contact')
+def contact():
+    return render_template('contact.html')
+
+@main.route('/newsletter')
+def newsletter_signup():
+    return render_template('newsletter.html')
+
+@main.route('/downloads')
+def downloads():
+    return render_template('downloads.html')
+
+@main.route('/support')
+def support():
+    return render_template('support.html')
+
+# Testimonials Page
+
+# Load testimonials from JSON
+def load_testimonials():
+    if not os.path.exists(TESTIMONIALS_FILE):
+        return {"testimonials": []}
+    with open(TESTIMONIALS_FILE, 'r', encoding='utf-8') as file:
+        try:
+            return json.load(file)
+        except json.JSONDecodeError:
+            return {"testimonials": []}
+        
+def save_testimonial(new_testimonial):
+    data = load_testimonials()
+    data["testimonials"].append(new_testimonial)
+    with open(TESTIMONIALS_FILE, 'w', encoding='utf-8') as file:
+        json.dump(data, file, indent=4)
+
+@main.route('/testimonials', methods=['GET', 'POST'])
+def testimonials():
+    if request.method == 'POST':
+        customer_name = request.form.get('customer_name')
+        rating = int(request.form.get('rating'))
+        comment = request.form.get('comment')
+        product_id = request.form.get('product_id')
+        if not product_id:
+            flash("Please select a product.", "error")
+            return redirect(url_for('main.testimonials'))
+        product_id = int(product_id)
+
+
+        if not customer_name or not comment:
+            flash("Please fill in all fields.", "error")
+            return redirect(url_for('main.testimonials'))
+
+        new_testimonial = {
+            "id": len(load_testimonials()["testimonials"]) + 1,
+            "customer_name": customer_name,
+            "rating": rating,
+            "comment": comment,
+            "product_id": product_id,
+            "date": datetime.now().strftime("%Y-%m-%d")
+        }
+
+        save_testimonial(new_testimonial)
+        flash("Your testimonial has been submitted successfully!", "success")
+        return redirect(url_for('main.testimonials'))
+
+    all_testimonials = load_testimonials()["testimonials"]
+    products = load_products()  # Load products for selection in the form
+    return render_template('testimonials.html', testimonials=all_testimonials, products=products)
+
