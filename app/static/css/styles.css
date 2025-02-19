@@ -28,11 +28,10 @@ body {
 
 
 /* 🔥 Navigation */
-.navbar {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+.navbar .form-control {
+    max-width: 250px; /* Adjust width */
 }
+
 .navbar-nav .nav-item.active .nav-link {
     color: var(--accent-color) !important;
     font-weight: bold;
@@ -47,15 +46,19 @@ body {
     border: none;
 }
 
-.navbar-nav .nav-link {
-    color: white !important;
-    font-weight: 600;
-    padding: 6px;
+.navbar-nav .nav-link i {
+    font-size: 14px; /* Reduce icon size */
+    margin-right: 5px; /* Add spacing */
 }
+
 
 .navbar-nav .nav-link:hover {
     color: var(--secondary-color) !important;
 }
+.navbar-collapse {
+    display: flex !important;
+}
+
 
 /* 🔽 Dropdown Menu */
 .navbar .dropdown-menu {
@@ -536,6 +539,7 @@ body {
 
 .cart-item-details {
     flex-grow: 1;
+    
 }
 
 .cart-item h5 {
