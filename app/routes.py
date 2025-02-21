@@ -158,6 +158,7 @@ def downloads():
 def support():
     return render_template('support.html')
 
+
 # Testimonials Page
 
 # Load testimonials from JSON
