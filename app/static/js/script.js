@@ -54,49 +54,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     
     
-
-    // Update cart count on page load
-    updateCartBadge();
-    
-    document.getElementById('chat-widget').addEventListener('click', function() {
-        document.getElementById('chat-box').style.display = 'flex';
-    });
-    
-    document.getElementById('close-chat').addEventListener('click', function() {
-        document.getElementById('chat-box').style.display = 'none';
-    });
-    
-    document.getElementById('send-message').addEventListener('click', function() {
-        const inputField = document.getElementById('chat-input');
-        const message = inputField.value.trim();
-        
-        if (message !== "") {
-            const chatBody = document.getElementById('chat-body');
-            
-            // Append user message
-            const userMessage = document.createElement('p');
-            userMessage.textContent = "You: " + message;
-            userMessage.style.background = "#eee";
-            userMessage.style.padding = "8px";
-            userMessage.style.borderRadius = "10px";
-            chatBody.appendChild(userMessage);
-    
-            // Clear input field
-            inputField.value = "";
-    
-            // Auto-reply
-            setTimeout(() => {
-                const botReply = document.createElement('p');
-                botReply.textContent = "🤖 Bot: Thank you for reaching out!";
-                botReply.classList.add('bot-message');
-                chatBody.appendChild(botReply);
-    
-                // Scroll to bottom
-                chatBody.scrollTop = chatBody.scrollHeight;
-            }, 1000);
-        }
-    });
-    
     
     
 });

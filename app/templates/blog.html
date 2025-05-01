@@ -1,32 +1,45 @@
-{% extends "base.html" %}
-
-{% block content %}
+{% extends "base.html" %} {% block content %}
 <section class="container py-5">
-    <a href="{{ url_for('main.products') }}" class="btn btn-outline-secondary mb-3">
-        ← Go Back
-    </a>
+  <a
+    href="{{ url_for('main.products') }}"
+    class="btn btn-outline-secondary mb-3"
+  >
+    ← Go Back
+  </a>
 
-    <h2 class="text-center fw-bold text-primary">PCHub Blog</h2>
-    <p class="text-center text-muted">Stay updated with the latest PC tech news, reviews, and build guides.</p>
+  <h2 class="text-center fw-bold text-primary">PCHub Blog</h2>
+  <p class="text-center text-muted">
+    Stay updated with the latest PC tech news, reviews, and build guides.
+  </p>
 
-    <div class="row g-4">
-        <div class="col-md-6">
-            <div class="card shadow-sm border-0" style="height: 500px;">
-                <img src="{{ url_for('static', filename='assets/extras/blog1.jpg') }}" class="card-img-top w-100 h-75 rounded-top" alt="Latest PC Builds">
-                <div class="card-body text-center">
-                    <h5 class="card-title fw-semibold">Top 5 Gaming PCs for 2025</h5>
-                </div>
-            </div>
+  <div class="row g-4">
+    <div class="col-md-6">
+      <div class="card shadow-sm border-0" style="height: 500px">
+        <img
+          src="{{ url_for('static', filename='assets/extras/blog1.jpg') }}"
+          class="card-img-top w-100 h-75 rounded-top"
+          alt="Latest PC Builds"
+        />
+        <div class="card-body text-center">
+          <h5 class="card-title fw-semibold">Top 5 Gaming PCs for 2025</h5>
         </div>
-        
-        <div class="col-md-6">
-            <div class="card shadow-sm border-0" style="height: 500px;">
-                <img src="{{ url_for('static', filename='assets/extras/blog2.jpg') }}" class="card-img-top w-100 h-75 rounded-top" alt="GPU Reviews">
-                <div class="card-body text-center">
-                    <h5 class="card-title fw-semibold">NVIDIA vs AMD: Which GPU to Choose?</h5>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+
+    <div class="col-md-6">
+      <div class="card shadow-sm border-0" style="height: 500px">
+        <img
+          src="{{ url_for('static', filename='assets/extras/blog2.jpg') }}"
+          class="card-img-top w-100 h-75 rounded-top"
+          alt="GPU Reviews"
+        />
+        <div class="card-body text-center">
+          <h5 class="card-title fw-semibold">
+            NVIDIA vs AMD: Which GPU to Choose?
+          </h5>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 {% endblock %}
