@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, jsonify, request, url_for, flash, redirect,abort
+from flask import Blueprint, render_template, jsonify, request, url_for, flash, redirect,abort, session
 import json
 import os
 from datetime import datetime
@@ -6,6 +6,7 @@ from datetime import datetime
 main = Blueprint('main', __name__)
 DATA_FILE = os.path.join(os.path.abspath(os.path.dirname(__file__)), '.', 'static', 'data', 'sample_products.json')
 TESTIMONIALS_FILE = os.path.join(os.path.abspath(os.path.dirname(__file__)), '.', 'static', 'data', 'testimonials.json')
+users_db = []
 
 
 # Categories dictionary for filtering
@@ -95,13 +96,50 @@ def get_product(product_id):
 
 
 #Login and Register routes
-@main.route('/login')
-def login():
-    return render_template('login.html')
 
-@main.route('/register')
+@main.route('/register', methods=['GET', 'POST'])
 def register():
-    return render_template('register.html')
+    if request.method == 'POST':
+        name = request.form.get('name')
+        email = request.form.get('email')
+        password = request.form.get('password') # In a real app, HASH THIS PASSWORD!
+
+        if not name or not email or not password:
+            flash('Please fill out all fields.', 'danger')
+            return render_template('register.html')
+
+        existing_user = next((user for user in users_db if user['email'] == email), None)
+        if existing_user:
+            flash('Email already registered.', 'warning')
+            return render_template('register.html')
+
+        users_db.append({'name': name, 'email': email, 'password': password})
+        flash('Account created successfully! Please login.', 'success')
+        return redirect(url_for('main.login'))
+    return render_template('register.html') # Rendered from uploaded:register.html
+
+@main.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        email = request.form.get('email')
+        password = request.form.get('password')
+
+        user = next((user for user in users_db if user['email'] == email and user['password'] == password), None)
+
+        if user:
+            session['user_email'] = user['email'] # Basic session management
+            flash('Login successful!', 'success')
+            return redirect(url_for('main.index')) # Or a dashboard page
+        else:
+            flash('Invalid email or password.', 'danger')
+            return render_template('login.html') # Rendered from uploaded:login.html
+    return render_template('login.html') # Rendered from uploaded:login.html
+
+@main.route('/logout')
+def logout():
+    session.pop('user_email', None)
+    flash('You have been logged out.', 'info')
+    return redirect(url_for('main.login'))
 
 # Additional pages routes
 

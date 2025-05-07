@@ -1,0 +1,41 @@
+{% extends 'base.html' %} {% block title %}Logged Out - PC Parts Hub{% endblock
+%} {% block content %}
+<div class="container mt-5 mb-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card text-center">
+        <div class="card-header">
+          <h2>You Have Been Logged Out</h2>
+        </div>
+        <div class="card-body">
+          <p class="card-text">
+            Thank you for visiting PC Parts Hub. You have been successfully
+            logged out.
+          </p>
+          <i class="fas fa-check-circle fa-3x text-success mb-3"></i>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+            <a
+              href="{{ url_for('main.login') }}"
+              class="btn btn-primary me-md-2"
+              >Login Again</a
+            >
+            <a href="{{ url_for('main.index') }}" class="btn btn-secondary"
+              >Go to Homepage</a
+            >
+          </div>
+        </div>
+        <div class="card-footer text-muted">See you soon!</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* You can add specific styles for the logout page here or in your main CSS file */
+  .logout-container {
+    /* If you decide to wrap it in a custom container */
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+</style>
+{% endblock %}
