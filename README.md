@@ -104,6 +104,6 @@ App will be available at `http://localhost:5000`
 
 ## 📬 Contact
 
-Created by [Your Name]  
+Created by 
 📧 Email: eleakim177@gmail.com  
 🔗 [Facebook Page](https://www.facebook.com/profile.php?id=61575747562680)
