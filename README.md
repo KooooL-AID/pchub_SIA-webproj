@@ -1,7 +1,7 @@
 
 # 🖥️ PC Parts Hub (PCHub) – Flask Web App
 
-**PC Parts Hub (PCHub)** is a sleek and modern e-commerce platform built with Flask. It allows users to browse PC hardware products, search/filter by category, add items to a shopping cart, and submit testimonials. Includes a blog section, user authentication, and static JSON-powered product management.
+**PC Parts Hub (PCHub)** is a simple modern e-commerce platform built with Flask. It allows users to browse PC hardware products, search/filter by category, add items to a shopping cart, and a demo login and registration for presentation . Includes a blog section and static JSON-powered product management.
 
 ---
 
