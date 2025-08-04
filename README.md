@@ -23,6 +23,9 @@
 🌐 [Visit the Deployed Site](https://pchub-sia-webproj.onrender.com/)
 
 ---
+## Live Screenshot
+<img width="949" height="437" alt="image" src="https://github.com/user-attachments/assets/ef43bb9a-1ed1-4db3-9816-0b23d67e94d1" />
+
 
 ## 🧰 Tech Stack
 
