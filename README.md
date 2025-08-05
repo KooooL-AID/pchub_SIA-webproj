@@ -41,8 +41,8 @@
 ### 1. Clone the Repo
 
 ```bash
-git clone https://github.com/your-username/pchub-flask-app.git
-cd pchub-flask-app
+git clone https://github.com/KooooL-AID/pchub_SIA-webproj.git
+cd pchub_SIA-webproj
 ```
 
 ### 2. Create a Virtual Environment
@@ -71,7 +71,7 @@ App will be available at `http://localhost:5000`
 ## 📁 Project Structure
 
 ```
-/pchub-flask-app
+/pchub_SIA-webproj
 │
 ├── app/
 │   ├── static/
